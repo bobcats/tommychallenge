@@ -24,5 +24,6 @@ defmodule Tommychallenge.Web.Router do
     pipe_through :api
 
     resources "/songs", SongController, except: [:new, :edit]
+    resources "/submissions", SubmissionController, except: [:new, :edit]
   end
 end
