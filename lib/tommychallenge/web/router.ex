@@ -20,7 +20,9 @@ defmodule Tommychallenge.Web.Router do
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", Tommychallenge.Web do
-  #   pipe_through :api
-  # end
+  scope "/api", Tommychallenge.Web do
+    pipe_through :api
+
+    resources "/songs", SongController, except: [:new, :edit]
+  end
 end
