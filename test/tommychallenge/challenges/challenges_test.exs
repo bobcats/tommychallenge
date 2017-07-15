@@ -189,4 +189,11 @@ defmodule Tommychallenge.ChallengesTest do
       assert %Ecto.Changeset{} = Challenges.change_submission(submission)
     end
   end
+
+  test "generate/0 generates the next challenge" do
+    {:ok, song} = Challenges.generate
+
+    assert song.phrase == "random"
+    assert song == Challenges.get_latest_song
+  end
 end

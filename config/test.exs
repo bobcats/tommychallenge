@@ -17,3 +17,5 @@ config :tommychallenge, Tommychallenge.Repo,
   database: "tommychallenge_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
+
+config :tommychallenge, :random_words_client, RandomWords.Mock

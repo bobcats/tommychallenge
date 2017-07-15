@@ -17,6 +17,8 @@ config :tommychallenge, Tommychallenge.Web.Endpoint,
   pubsub: [name: Tommychallenge.PubSub,
            adapter: Phoenix.PubSub.PG2]
 
+config :tommychallenge, :random_words_client, RandomWords.HTTP
+
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",

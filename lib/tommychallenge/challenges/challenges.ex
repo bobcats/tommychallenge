@@ -3,9 +3,11 @@ defmodule Tommychallenge.Challenges do
   The boundary for the Challenges system.
   """
 
-  import Ecto.Query, warn: false
-  alias Tommychallenge.Repo
+  @random_words_client Application.get_env(:tommychallenge, :random_words_client)
 
+  import Ecto.Query, warn: false
+
+  alias Tommychallenge.Repo
   alias Tommychallenge.Challenges.Song
 
   @doc """
@@ -215,5 +217,16 @@ defmodule Tommychallenge.Challenges do
   """
   def change_submission(%Submission{} = submission) do
     Submission.changeset(submission, %{})
+  end
+
+  def generate do
+    phrase = @random_words_client.get
+    create_song(%{
+      artist: "some artist",
+      link: "some link",
+      live_at: DateTime.utc_now,
+      phrase: phrase,
+      title: "some title",
+    })
   end
 end
