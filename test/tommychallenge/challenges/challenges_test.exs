@@ -6,9 +6,53 @@ defmodule Tommychallenge.ChallengesTest do
   describe "songs" do
     alias Tommychallenge.Challenges.Song
 
-    @valid_attrs %{artist: "some artist", link: "some link", live_at: %DateTime{calendar: Calendar.ISO, day: 17, hour: 14, microsecond: {0, 6}, minute: 0, month: 4, second: 0, std_offset: 0, time_zone: "Etc/UTC", utc_offset: 0, year: 2010, zone_abbr: "UTC"}, phrase: "some phrase", title: "some title"}
-    @update_attrs %{artist: "some updated artist", link: "some updated link", live_at: %DateTime{calendar: Calendar.ISO, day: 18, hour: 15, microsecond: {0, 6}, minute: 1, month: 5, second: 1, std_offset: 0, time_zone: "Etc/UTC", utc_offset: 0, year: 2011, zone_abbr: "UTC"}, phrase: "some updated phrase", title: "some updated title"}
-    @invalid_attrs %{artist: nil, link: nil, live_at: nil, phrase: nil, title: nil}
+    @valid_attrs %{
+      artist: "some artist",
+      link: "some link",
+      live_at: %DateTime{
+        calendar: Calendar.ISO,
+        day: 17,
+        hour: 14,
+        microsecond: {0, 6},
+        minute: 0,
+        month: 4,
+        second: 0,
+        std_offset: 0,
+        time_zone: "Etc/UTC",
+        utc_offset: 0,
+        year: 2010,
+        zone_abbr: "UTC"
+      },
+      phrase: "some phrase",
+      title: "some title"
+    }
+    @update_attrs %{
+      artist: "some updated artist",
+      link: "some updated link",
+      live_at: %DateTime{
+        calendar: Calendar.ISO,
+        day: 18,
+        hour: 15,
+        microsecond: {0, 6},
+        minute: 1,
+        month: 5,
+        second: 1,
+        std_offset: 0,
+        time_zone: "Etc/UTC",
+        utc_offset: 0,
+        year: 2011,
+        zone_abbr: "UTC"
+      },
+      phrase: "some updated phrase",
+      title: "some updated title"
+    }
+    @invalid_attrs %{
+      artist: nil,
+      link: nil,
+      live_at: nil,
+      phrase: nil,
+      title: nil
+    }
 
     def song_fixture(attrs \\ %{}) do
       {:ok, song} =
@@ -22,6 +66,13 @@ defmodule Tommychallenge.ChallengesTest do
     test "list_songs/0 returns all songs" do
       song = song_fixture()
       assert Challenges.list_songs() == [song]
+    end
+
+    test "get_latest_song/0 returns latest song" do
+      later_song = song_fixture(@update_attrs)
+      _song = song_fixture()
+
+      assert Challenges.get_latest_song() == later_song
     end
 
     test "get_song!/1 returns the song with given id" do

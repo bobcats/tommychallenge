@@ -22,6 +22,25 @@ defmodule Tommychallenge.Challenges do
   end
 
   @doc """
+  Gets the latest song
+
+  ## Examples
+
+      iex> get_latest_song()
+      %Song{}
+
+      iex> get_latest_song()
+      nil
+
+  """
+  def get_latest_song do
+    Song
+    |> Ecto.Query.order_by([desc: :live_at])
+    |> Ecto.Query.limit(1)
+    |> Repo.one
+  end
+
+  @doc """
   Gets a single song.
 
   Raises `Ecto.NoResultsError` if the Song does not exist.
