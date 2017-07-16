@@ -18,6 +18,11 @@ config :tommychallenge, Tommychallenge.Web.Endpoint,
            adapter: Phoenix.PubSub.PG2]
 
 config :tommychallenge, :random_words_client, RandomWords.HTTP
+config :tommychallenge, :spotify_client, Spotify.HTTP
+
+config :tommychallenge,
+  spotify_client_id: System.get_env("SPOTIFY_CLIENT_ID"),
+  spotify_client_secret: System.get_env("SPOTIFY_CLIENT_SECRET")
 
 # Configures Elixir's Logger
 config :logger, :console,

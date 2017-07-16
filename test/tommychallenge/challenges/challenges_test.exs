@@ -194,6 +194,9 @@ defmodule Tommychallenge.ChallengesTest do
     {:ok, song} = Challenges.generate
 
     assert song.phrase == "random"
+    assert song.artist == "Young Thug"
+    assert song.link == "spotify:track:55OdqrG8WLmsYyY1jijD9b"
+    assert song.title == "Wyclef Jean"
     assert song == Challenges.get_latest_song
   end
 end

@@ -4,6 +4,7 @@ defmodule Tommychallenge.Challenges do
   """
 
   @random_words_client Application.get_env(:tommychallenge, :random_words_client)
+  @spotify_client Application.get_env(:tommychallenge, :spotify_client)
 
   import Ecto.Query, warn: false
 
@@ -221,12 +222,18 @@ defmodule Tommychallenge.Challenges do
 
   def generate do
     phrase = @random_words_client.get
+    %Spotify.Track{
+      artist: artist,
+      name: title,
+      uri: link,
+    } = @spotify_client.search_for_track(phrase)
+
     create_song(%{
-      artist: "some artist",
-      link: "some link",
+      artist: artist,
+      link: link,
       live_at: DateTime.utc_now,
       phrase: phrase,
-      title: "some title",
+      title: title,
     })
   end
 end

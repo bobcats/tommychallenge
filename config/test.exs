@@ -19,3 +19,4 @@ config :tommychallenge, Tommychallenge.Repo,
   pool: Ecto.Adapters.SQL.Sandbox
 
 config :tommychallenge, :random_words_client, RandomWords.Mock
+config :tommychallenge, :spotify_client, Spotify.Mock
