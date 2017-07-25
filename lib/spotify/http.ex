@@ -5,26 +5,14 @@ defmodule Spotify.HTTP do
   alias Spotify.Track
 
   def search_for_track(phrase) do
-    body = HTTPoison.get!(
+    search_for_track_body(phrase) |> Poison.decode!
+  end
+
+  def search_for_track_body(phrase) do
+    HTTPoison.get!(
       "#{@search_url}?#{search_query(phrase)}",
       search_headers()
     ).body
-
-    %{
-      "tracks" => %{
-        "items" => [%{
-          "uri" => uri,
-          "artists" => [%{"name" => artist} | _rest],
-          "name" => name,
-        }]
-      }
-    } = Poison.decode!(body)
-
-    %Track{
-      artist: artist,
-      name: name,
-      uri: uri,
-    }
   end
 
   def search_query(phrase) do

@@ -222,18 +222,26 @@ defmodule Tommychallenge.Challenges do
 
   def generate do
     phrase = @random_words_client.get
-    %Spotify.Track{
-      artist: artist,
-      name: title,
-      uri: link,
-    } = @spotify_client.search_for_track(phrase)
 
-    create_song(%{
-      artist: artist,
-      link: link,
-      live_at: DateTime.utc_now,
-      phrase: phrase,
-      title: title,
-    })
+    with %{
+      "tracks" => %{
+        "items" => [%{
+          "uri" => uri,
+          "artists" => [%{"name" => artist} | _rest],
+          "name" => name,
+          }]
+        }
+      } <- @spotify_client.search_for_track(phrase)
+    do
+      create_song(%{
+        artist: artist,
+        link: uri,
+        live_at: DateTime.utc_now,
+        phrase: phrase,
+        title: name,
+      })
+    else
+      _ -> generate
+    end
   end
 end

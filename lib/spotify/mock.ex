@@ -2,10 +2,42 @@ defmodule Spotify.Mock do
   alias Spotify.Track
 
   def search_for_track(_phrase) do
-    %Track{
-      artist: "Young Thug",
-      name: "Wyclef Jean",
-      uri: "spotify:track:55OdqrG8WLmsYyY1jijD9b",
-    }
+    %{"tracks" => %{"href" => "https://api.spotify.com/v1/search?query=Wyclef+Jean&type=track&offset=0&limit=1",
+        "items" => [%{"album" => %{"album_type" => "album",
+             "artists" => [%{"external_urls" => %{"spotify" => "https://open.spotify.com/artist/50co4Is1HCEo8bhOyUWKpn"},
+                "href" => "https://api.spotify.com/v1/artists/50co4Is1HCEo8bhOyUWKpn",
+                "id" => "50co4Is1HCEo8bhOyUWKpn", "name" => "Young Thug",
+                "type" => "artist",
+                "uri" => "spotify:artist:50co4Is1HCEo8bhOyUWKpn"}],
+             "available_markets" => ["US"],
+             "external_urls" => %{"spotify" => "https://open.spotify.com/album/7EpUpNUkkEGnaCvkcn1j4H"},
+             "href" => "https://api.spotify.com/v1/albums/7EpUpNUkkEGnaCvkcn1j4H",
+             "id" => "7EpUpNUkkEGnaCvkcn1j4H",
+             "images" => [%{"height" => 640,
+                "url" => "https://i.scdn.co/image/962c51ca74944e60cccf0f39d10bee03666b0467",
+                "width" => 640},
+              %{"height" => 300,
+                "url" => "https://i.scdn.co/image/e9265a5c3344543d82da695f5059c34f113b1863",
+                "width" => 300},
+              %{"height" => 64,
+                "url" => "https://i.scdn.co/image/8d47dbe02d9187f1b5d40b305459375d40dde987",
+                "width" => 64}], "name" => "JEFFERY", "type" => "album",
+             "uri" => "spotify:album:7EpUpNUkkEGnaCvkcn1j4H"},
+           "artists" => [%{"external_urls" => %{"spotify" => "https://open.spotify.com/artist/50co4Is1HCEo8bhOyUWKpn"},
+              "href" => "https://api.spotify.com/v1/artists/50co4Is1HCEo8bhOyUWKpn",
+              "id" => "50co4Is1HCEo8bhOyUWKpn", "name" => "Young Thug",
+              "type" => "artist",
+              "uri" => "spotify:artist:50co4Is1HCEo8bhOyUWKpn"}],
+           "available_markets" => ["US"], "disc_number" => 1, "duration_ms" => 236293,
+           "explicit" => true, "external_ids" => %{"isrc" => "USAT21602475"},
+           "external_urls" => %{"spotify" => "https://open.spotify.com/track/55OdqrG8WLmsYyY1jijD9b"},
+           "href" => "https://api.spotify.com/v1/tracks/55OdqrG8WLmsYyY1jijD9b",
+           "id" => "55OdqrG8WLmsYyY1jijD9b", "name" => "Wyclef Jean",
+           "popularity" => 78,
+           "preview_url" => "https://p.scdn.co/mp3-preview/d3eb12d7e4bb7b9d8f150abcd214c10d345b62ee?cid=32fbf3dcc3424385889bf09e0d0d79b2",
+           "track_number" => 1, "type" => "track",
+           "uri" => "spotify:track:55OdqrG8WLmsYyY1jijD9b"}], "limit" => 1,
+        "next" => "https://api.spotify.com/v1/search?query=Wyclef+Jean&type=track&offset=1&limit=1",
+        "offset" => 0, "previous" => nil, "total" => 662}}
   end
 end
