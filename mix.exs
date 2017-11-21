@@ -28,15 +28,18 @@ defmodule Tommychallenge.Mixfile do
   #
   # Type `mix help deps` for examples and options.
   defp deps do
-    [{:phoenix, "~> 1.3.0-rc"},
-     {:phoenix_pubsub, "~> 1.0"},
-     {:phoenix_ecto, "~> 3.2"},
-     {:postgrex, ">= 0.0.0"},
-     {:phoenix_html, "~> 2.6"},
-     {:phoenix_live_reload, "~> 1.0", only: :dev},
-     {:gettext, "~> 0.11"},
-     {:httpoison, "~> 0.12"},
-     {:cowboy, "~> 1.0"}]
+    [
+      {:cowboy, "~> 1.0"},
+      {:credo, "~> 0.8", only: [:dev, :test], runtime: false},
+      {:gettext, "~> 0.11"},
+      {:httpoison, "~> 0.12"},
+      {:phoenix, "~> 1.3.0-rc"},
+      {:phoenix_ecto, "~> 3.2"},
+      {:phoenix_html, "~> 2.6"},
+      {:phoenix_live_reload, "~> 1.0", only: :dev},
+      {:phoenix_pubsub, "~> 1.0"},
+      {:postgrex, ">= 0.0.0"},
+    ]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.

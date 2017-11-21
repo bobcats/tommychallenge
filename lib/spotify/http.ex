@@ -5,7 +5,9 @@ defmodule Spotify.HTTP do
   alias Spotify.Track
 
   def search_for_track(phrase) do
-    search_for_track_body(phrase) |> Poison.decode!
+    phrase
+    |> search_for_track_body
+    |> Poison.decode!
   end
 
   def search_for_track_body(phrase) do
