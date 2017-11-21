@@ -13,7 +13,7 @@ config :tommychallenge,
 config :tommychallenge, Tommychallenge.Web.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "RtwcSw7rohD6vhgH99+jUTv+5bKBiHwkof6OT3ddbieJlGn4/Pl//huyeZe4hofJ",
-  render_errors: [view: Tommychallenge.Web.ErrorView, accepts: ~w(html json)],
+  render_errors: [view: Tommychallenge.Web.ErrorView, accepts: ~w(json)],
   pubsub: [name: Tommychallenge.PubSub,
            adapter: Phoenix.PubSub.PG2]
 
