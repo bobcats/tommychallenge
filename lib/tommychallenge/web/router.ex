@@ -10,5 +10,6 @@ defmodule Tommychallenge.Web.Router do
 
     resources "/songs", SongController, except: [:new, :edit]
     resources "/submissions", SubmissionController, except: [:new, :edit]
+    resources "/users", Accounts.UserController, only: [:create]
   end
 end
