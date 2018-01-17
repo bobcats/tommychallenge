@@ -15,6 +15,7 @@ defmodule Tommychallenge.Accounts.User do
     timestamps()
   end
 
+  @required_attrs [:email, :username]
   def create_user(attrs \\ %{}) do
     %User{}
     |> User.changeset(attrs)
@@ -24,7 +25,7 @@ defmodule Tommychallenge.Accounts.User do
   def changeset(%User{} = user, attrs \\ %{}) do
     user
     |> cast(attrs, [:email, :name, :username])
-    |> validate_required([:email, :username])
+    |> validate_required(@required_attrs)
     |> validate_length(:username, min: 3, max: 20)
     |> validate_format(:email, ~r/@/)
   end
