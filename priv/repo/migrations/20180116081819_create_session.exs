@@ -3,7 +3,7 @@ defmodule Tommychallenge.Repo.Migrations.CreateSession do
 
   def change do
     create table(:sessions) do
-      add :user_id, references(:users, on_delete: :nothing)
+      add :user_id, references(:users, on_delete: :nothing),  null: false
       add :token, :text, null: false
 
       timestamps()

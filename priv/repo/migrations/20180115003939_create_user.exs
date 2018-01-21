@@ -6,7 +6,7 @@ defmodule Tommychallenge.Repo.Migrations.CreateUser do
       add :username, :text, null: false
       add :name, :text
       add :email, :text, null: false
-      add :password_hash, :text
+      add :password_hash, :text,  null: false
 
       timestamps()
     end

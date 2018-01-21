@@ -18,7 +18,7 @@ defmodule Tommychallenge.Accounts.User do
   @required_attrs [:email, :username]
   def create_user(attrs \\ %{}) do
     %User{}
-    |> User.changeset(attrs)
+    |> User.registration_changeset(attrs)
     |> Repo.insert()
   end
 
