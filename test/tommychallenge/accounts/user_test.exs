@@ -50,4 +50,34 @@ defmodule Tommychallenge.Accounts.UserTest do
     )
     refute changeset.valid?
   end
+
+  test "registration_changeset is invalid when email is taken" do
+    user = User.registration_changeset(%User{}, @valid_attrs)
+    assert {:ok, user } = Repo.insert(user)
+
+    copycat = User.registration_changeset(%User{}, %{
+      name: "J Dilla Imposter",
+      username: "jdillaimp",
+      email: "jdilla@gmail.com",
+      password: "s3cr3t"
+    })
+
+    assert {:error, changeset} = Repo.insert(copycat)
+    assert changeset.errors[:email] == {"has already been taken", []}
+  end
+
+  test "registration_changeset is invalid when username is taken" do
+    user = User.registration_changeset(%User{}, @valid_attrs)
+    assert {:ok, user } = Repo.insert(user)
+
+    copycat = User.registration_changeset(%User{}, %{
+      name: "J Dilla Imposter",
+      username: "jdilla",
+      email: "jdillaimp@gmail.com",
+      password: "s3cr3t"
+    })
+
+    assert {:error, changeset} = Repo.insert(copycat)
+    assert changeset.errors[:username] == {"has already been taken", []}
+  end
 end

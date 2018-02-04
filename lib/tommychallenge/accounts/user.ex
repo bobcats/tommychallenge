@@ -33,6 +33,8 @@ defmodule Tommychallenge.Accounts.User do
   def registration_changeset(%User{} = user, attrs \\ %{}) do
     user
     |> changeset(attrs)
+    |> unique_constraint(:email)
+    |> unique_constraint(:username)
     |> cast(attrs, [:password])
     |> validate_required([:password])
     |> validate_length(:password, min: 6)
