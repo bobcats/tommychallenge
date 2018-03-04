@@ -38,6 +38,7 @@ defmodule Tommychallenge.Web.Endpoint do
     key: "_tommychallenge_key",
     signing_salt: "wlOyqTk4"
 
+  plug CORSPlug
   plug Tommychallenge.Web.Router
 
   @doc """

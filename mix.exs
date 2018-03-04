@@ -29,16 +29,20 @@ defmodule Tommychallenge.Mixfile do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:comeonin, "~> 4.0"},
+      {:cors_plug, "~> 1.1"},
       {:cowboy, "~> 1.0"},
       {:credo, "~> 0.8", only: [:dev, :test], runtime: false},
       {:gettext, "~> 0.11"},
       {:httpoison, "~> 0.12"},
+      {:pbkdf2_elixir, "~> 0.12"},
       {:phoenix, "~> 1.3.0-rc"},
       {:phoenix_ecto, "~> 3.2"},
       {:phoenix_html, "~> 2.6"},
       {:phoenix_live_reload, "~> 1.0", only: :dev},
       {:phoenix_pubsub, "~> 1.0"},
       {:postgrex, ">= 0.0.0"},
+      {:secure_random, "~> 0.5"}
     ]
   end
 

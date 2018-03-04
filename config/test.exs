@@ -20,3 +20,6 @@ config :tommychallenge, Tommychallenge.Repo,
 
 config :tommychallenge, :random_words_client, RandomWords.Mock
 config :tommychallenge, :spotify_client, Spotify.Mock
+
+# Reduce encryption rounds to speed up tests.
+config :comeonin, :pbkdf2_rounds, 1
