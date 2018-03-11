@@ -27,3 +27,6 @@ npm-debug.log
 /config/*.secret.exs
 
 .env
+node_modules
+.elixir_ls
+.vscode
