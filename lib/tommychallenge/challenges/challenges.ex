@@ -241,7 +241,7 @@ defmodule Tommychallenge.Challenges do
         title: name,
       })
     else
-      _ -> generate
+      _ -> generate()
     end
   end
 end
