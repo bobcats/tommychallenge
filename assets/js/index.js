@@ -54,7 +54,7 @@ function groupSubmissions(submission) {
 };
 
 function createBodyItems(group, elementID) {
-  for (i = 0; i < group.length; i++){
+  for (var i = 0; i < group.length; i++){
     const individualSubmission = document.createElement("div");
     individualSubmission.className = "mainSubmissionIndividual";
     individualSubmission.id = `${elementID}[${i}]`;
@@ -94,3 +94,14 @@ function toggleBody(container) {
   document.getElementById(container).style.display = "block";
   document.getElementById(`${container}Link`).style.fontWeight = "bold";
 }
+
+
+const aboutLink = document.getElementById("aboutLink")
+const loginLink = document.getElementById("loginLink")
+const previousChallengeLink = document.getElementById("previousChallengeLink")
+const currentChallengeLink = document.getElementById("currentChallengeLink")
+
+aboutLink.onclick = () => { toggleBody("about") }
+previousChallengeLink.onclick = () => { toggleBody("previousChallenge") }
+currentChallengeLink.onclick = () => { toggleBody("currentChallenge") }
+loginLink.onclick = () => { toggleBody("login") }
