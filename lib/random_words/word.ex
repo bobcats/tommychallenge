@@ -1,13 +1,11 @@
 defmodule RandomWords.Word do
-  alias RandomWords.Word
-
   @behaviour RandomWords
   @unix_dictionary "/usr/share/dict/words"
   @unix_dictionary_backup "/usr/dict/words"
 
   def generate do
     try do
-      get_word_list |> Enum.random
+      get_word_list() |> Enum.random
     rescue
       _ in File.Error ->
         { :error, "An error occured reading from UNIX dictionary." }
