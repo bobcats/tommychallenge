@@ -2,9 +2,8 @@ defmodule Tommychallenge.Challenges do
   @moduledoc """
   The boundary for the Challenges system.
   """
-
-  @random_words_client Application.get_env(:tommychallenge, :random_words_client)
   @spotify_client Application.get_env(:tommychallenge, :spotify_client)
+  @random_words_client Application.get_env(:tommychallenge, :random_words_client)
 
   import Ecto.Query, warn: false
 
@@ -221,7 +220,7 @@ defmodule Tommychallenge.Challenges do
   end
 
   def generate do
-    phrase = @random_words_client.get
+    phrase = @random_words_client.generate
 
     with %{
       "tracks" => %{

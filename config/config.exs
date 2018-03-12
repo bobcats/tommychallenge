@@ -17,7 +17,7 @@ config :tommychallenge, Tommychallenge.Web.Endpoint,
   pubsub: [name: Tommychallenge.PubSub,
            adapter: Phoenix.PubSub.PG2]
 
-config :tommychallenge, :random_words_client, RandomWords.HTTP
+config :tommychallenge, :random_words_client, RandomWords.Word
 config :tommychallenge, :spotify_client, Spotify.HTTP
 
 config :tommychallenge,
