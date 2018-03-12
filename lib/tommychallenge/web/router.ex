@@ -5,6 +5,8 @@ defmodule Tommychallenge.Web.Router do
     plug :accepts, ["json"]
   end
 
+  get "/", HomeController, :index
+
   scope "/api", Tommychallenge.Web do
     pipe_through :api
 
