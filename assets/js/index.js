@@ -1,3 +1,5 @@
+import "../css/index.css";
+
 const submissions = [
   {
     created_by: "Brian",
